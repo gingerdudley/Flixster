@@ -52,7 +52,36 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
+            
             NSLog(@"%@", [error localizedDescription]);
+            
+            //[self.movieActivityIndicator stopAnimating];
+            
+            //adding altert button
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+
+            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action){
+                //testing the load icon
+                [self.movieActivityIndicator startAnimating];
+                [self fetchMovies];
+                
+            }];
+            
+            [alert addAction:tryAgainAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                //testing the load icon
+                //[self.movieActivityIndicator startAnimating];
+                //[self fetchMovies];
+            }];
+            
+            /*UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action){
+                
+            }];
+            
+            [alert addAction: okAction];*/
+      
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -72,6 +101,11 @@
     }];
     [task resume];
 }
+
+//adding delay function for the network to search
+/*- (void)animateWithDelay: (NSTimeInterval)delay{
+    
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
