@@ -113,6 +113,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterView" destination="7zK-Wz-R0n" id="4Yx-VV-WIP"/>
+                                            <segue destination="P82-vF-5Fb" kind="show" id="hci-uF-eqB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -165,7 +166,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dh-QU-e1q">
                                         <rect key="frame" x="8" y="310" width="359" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -241,4 +242,7 @@
             <point key="canvasLocation" x="125.59999999999999" y="704.79760119940033"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hci-uF-eqB"/>
+    </inferredMetricsTieBreakers>
 </document>
