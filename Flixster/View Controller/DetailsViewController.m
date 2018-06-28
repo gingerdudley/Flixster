@@ -45,6 +45,7 @@
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
     
+    
 }
 
 - (void)didReceiveMemoryWarning {

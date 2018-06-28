@@ -15,7 +15,8 @@
 
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -26,6 +27,7 @@
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    self.searchBar.delegate = self;
     
     
    [self fetchMovies];
@@ -41,6 +43,11 @@
     CGFloat itemWidth = self.collectionView.frame.size.width / postersPerline;
     CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake( itemWidth, itemHeight);
+    
+    //adding the search bar
+    //
+    //
+    //self.searchBar.delegate = self;
     
 }
 
@@ -64,6 +71,7 @@
             //prints so you can later locate keywords to use in array
            
             self.movies = dataDictionary[@"results"];
+            self.filteredData = self.movies;
             [self.collectionView reloadData];
             
         }
@@ -72,6 +80,11 @@
     [task resume];
 }
 
+/*//added for search bar section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.filteredData.count;
+}*/
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -79,7 +92,9 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    UITableViewCell *tappedCell = sender;
+    
+    //UITabelViewCell *tappedCell = sender;
+    UICollectionViewCell *tappedCell = sender;
     
     //does this matter? not breaking code but giving me a warning, replaced tableView with collectionView
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
@@ -95,7 +110,7 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.item];
+    NSDictionary *movie = self.filteredData[indexPath.item];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
@@ -108,7 +123,21 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filteredData.count;
+}
+
+//tweeking with search bar
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if(searchText.length != 0){
+        self.filteredData = [self.movies filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(title contains[c] %@)", searchText]];
+        
+        NSLog(@"%@", self.filteredData);
+    }
+    else{
+        self.filteredData = self.movies;
+    }
+    
+    [self.collectionView reloadData];
 }
 
 

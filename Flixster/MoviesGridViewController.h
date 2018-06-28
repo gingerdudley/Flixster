@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoviesGridViewController : UIViewController
+//@interface MoviesGridViewController : UIViewController
+//testing this out to insert the search bar
+@interface MoviesGridViewController :UIViewController<UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
 
 @end
