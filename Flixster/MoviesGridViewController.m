@@ -26,9 +26,21 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
-    //causing a crash
     
    [self fetchMovies];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    
+    //layout.minimumInteritemSpacing = 5;
+    //layout.minimumLineSpacing = 5;
+    
+    CGFloat postersPerline = 3;
+    
+    //CGFloat itemWidth = (self.collectionView.frame.size.width - minimumInteritemSpacing) *postersPerline-1/ postersPerline;
+    CGFloat itemWidth = self.collectionView.frame.size.width / postersPerline;
+    CGFloat itemHeight = itemWidth * 1.5;
+    layout.itemSize = CGSizeMake( itemWidth, itemHeight);
+    
 }
 
 - (void)didReceiveMemoryWarning {
