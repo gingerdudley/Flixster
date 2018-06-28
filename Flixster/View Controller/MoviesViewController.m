@@ -17,6 +17,9 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
+//added activity indicator
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *movieActivityIndicator;
+
 @end
 
 @implementation MoviesViewController
@@ -26,7 +29,10 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    [self.movieActivityIndicator startAnimating];
     [self fetchMovies];
+    //[self.movieActivityIndicator stopAnimating];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
@@ -37,6 +43,10 @@
 
 -(void)fetchMovies{
     // Do any additional setup after loading the view.
+    //loading the activity indicator
+    
+    //[self.movieActivityIndicator startAnimating];
+    
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -58,6 +68,7 @@
             [self.tableView reloadData];
         }
         [self.refreshControl endRefreshing];
+        [self.movieActivityIndicator stopAnimating];
     }];
     [task resume];
 }
