@@ -26,7 +26,9 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
-   // [self fetchMovies];
+    //causing a crash
+    
+   [self fetchMovies];
 }
 
 - (void)didReceiveMemoryWarning {
