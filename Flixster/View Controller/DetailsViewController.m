@@ -58,6 +58,7 @@
 }
 
 //trying to ad a second tap gesture
+//
 - (IBAction)onVideoTap:(id)sender {
     [self performSegueWithIdentifier:@"videoTap" sender:nil];
     

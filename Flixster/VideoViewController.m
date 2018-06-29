@@ -10,6 +10,8 @@
 
 @interface VideoViewController ()
 
+//@property (weak, nonatomic) IBOutlet WKWebView *videoWebView;
+
 @end
 
 @implementation VideoViewController

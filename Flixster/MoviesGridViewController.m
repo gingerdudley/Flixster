@@ -98,10 +98,12 @@
     
     //does this matter? not breaking code but giving me a warning, replaced tableView with collectionView
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    //NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredData[indexPath.row];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
+    //detailsViewController.movie = self.filteredData[indexPath.item];
     
     //NSLog(@"tapping on a movie!");
 }

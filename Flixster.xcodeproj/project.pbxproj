@@ -23,6 +23,7 @@
 		4C06B60820E4BC1F000C4FD1 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C06B60720E4BC1F000C4FD1 /* MovieCollectionCell.m */; };
 		4C06B64F20E5A8F4000C4FD1 /* BackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C06B64E20E5A8F4000C4FD1 /* BackgroundViewController.m */; };
 		4C06B65220E5EE33000C4FD1 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C06B65120E5EE33000C4FD1 /* VideoViewController.m */; };
+		4C06B65420E5F516000C4FD1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C06B65320E5F516000C4FD1 /* WebKit.framework */; };
 		CF124AD9F2E5DCA5990AA935 /* libPods-Flixster.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE779BD28EA8466115F71E /* libPods-Flixster.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		4C06B64E20E5A8F4000C4FD1 /* BackgroundViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundViewController.m; sourceTree = "<group>"; };
 		4C06B65020E5EE33000C4FD1 /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		4C06B65120E5EE33000C4FD1 /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		4C06B65320E5F516000C4FD1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		64CE779BD28EA8466115F71E /* libPods-Flixster.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flixster.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3D6B3FF8F16419705D4B1 /* Pods-Flixster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flixster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flixster/Pods-Flixster.release.xcconfig"; sourceTree = "<group>"; };
 		C1238BE32B30E110C3402F4C /* libPods-FlixsterUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixsterUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C06B65420E5F516000C4FD1 /* WebKit.framework in Frameworks */,
 				CF124AD9F2E5DCA5990AA935 /* libPods-Flixster.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +209,7 @@
 		6A264BF686ACE46F243EB9ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C06B65320E5F516000C4FD1 /* WebKit.framework */,
 				64CE779BD28EA8466115F71E /* libPods-Flixster.a */,
 				FA1B04D641EE5E7377EB70AE /* libPods-FlixsterTests.a */,
 				C1238BE32B30E110C3402F4C /* libPods-FlixsterUITests.a */,
