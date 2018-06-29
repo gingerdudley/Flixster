@@ -14,6 +14,10 @@
 //@property (weak, nonatomic) IBOutlet WKWebView *videoWebView;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImage;
 @property (weak, nonatomic) IBOutlet UILabel *releaseDate;
+@property (weak, nonatomic) IBOutlet UILabel *popularityVote;
+@property (weak, nonatomic) IBOutlet UIView *redFaceView;
+@property (weak, nonatomic) IBOutlet UIView *greenFaceView;
+@property (weak, nonatomic) IBOutlet UIView *yellowFaceView;
 
 @end
 
@@ -33,6 +37,38 @@
     
     self.releaseDate.text = self.movie[@"release_date"];
     [self.releaseDate sizeToFit];
+    
+    /*self.popularityVote.text = self.movie[@"vote_average"];
+    [self.popularityVote sizeToFit];*/
+    
+    double averageVote = [self.movie[@"vote_average"] doubleValue];
+    self.popularityVote.text = [[NSString stringWithFormat:@"%.1f", averageVote] stringByAppendingString:@"/ 10"];
+    [self.popularityVote sizeToFit];
+    
+    
+    //playing with the image showing up
+    //UIView
+    if(averageVote < 4.5){
+        self.redFaceView.alpha = 1;
+        self.yellowFaceView.alpha = 0;
+        self.greenFaceView.alpha = 0;
+    }
+    else if(averageVote < 7.5){
+        self.redFaceView.alpha = 0;
+        self.yellowFaceView.alpha = 1;
+        self.greenFaceView.alpha = 0;
+        
+    }
+    else{
+        self.redFaceView.alpha = 0;
+        self.yellowFaceView.alpha = 0;
+        self.greenFaceView.alpha = 1;
+        
+    }
+    
+    
+    
+    //NSLog(@"%@", [self.movie[@"vote_average"] class]);
     
 }
 
