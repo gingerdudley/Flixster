@@ -157,10 +157,15 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHd-o3-PJp">
                                         <rect key="frame" x="0.0" y="-64" width="375" height="296"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9c-49-ePS">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9c-49-ePS">
                                         <rect key="frame" x="0.0" y="109" width="109" height="193"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="BK5-xi-dJK" appends="YES" id="rm0-sG-8zI"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ne-Qt-ov2">
                                         <rect key="frame" x="125" y="259" width="198" height="43"/>
@@ -190,8 +195,38 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iE3-hS-y5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="BK5-xi-dJK">
+                    <connections>
+                        <action selector="onTap:" destination="P82-vF-5Fb" id="Fw8-8K-Z8A"/>
+                        <segue destination="eFu-T7-FE8" kind="show" identifier="imageTap" id="XZ7-zQ-GjZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="126" y="2276"/>
+        </scene>
+        <!--Background View Controller-->
+        <scene sceneID="UX9-bP-gVX">
+            <objects>
+                <viewController id="eFu-T7-FE8" customClass="BackgroundViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RBn-N8-6Dj" customClass="Back">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UwN-6X-wWt">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Uph-2f-zEB"/>
+                    </view>
+                    <connections>
+                        <outlet property="posterImage" destination="UwN-6X-wWt" id="ULg-89-9g9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGZ-tE-xP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="2485.9070464767619"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VBm-YI-RTZ">
