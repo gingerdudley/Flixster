@@ -9,6 +9,8 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "BackgroundViewController.h"
+//adding trailer view
+#import "VideoViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
@@ -55,6 +57,12 @@
     [self performSegueWithIdentifier:@"imageTap" sender:nil];
 }
 
+//trying to ad a second tap gesture
+- (IBAction)onVideoTap:(id)sender {
+    [self performSegueWithIdentifier:@"videoTap" sender:nil];
+    
+}
+
 
 
 #pragma mark - Navigation
@@ -65,6 +73,9 @@
     // Pass the selected object to the new view controller.
     BackgroundViewController *backgroundViewController = [segue destinationViewController];
     backgroundViewController.movie = self.movie;
+    
+    VideoViewController *videoViewController = [segue destinationViewController];
+    videoViewController.movie = self.movie;
 }
 
 

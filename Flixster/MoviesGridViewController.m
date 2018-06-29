@@ -129,6 +129,7 @@
 //tweeking with search bar
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if(searchText.length != 0){
+        
         self.filteredData = [self.movies filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(title contains[c] %@)", searchText]];
         
         NSLog(@"%@", self.filteredData);
