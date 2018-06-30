@@ -34,20 +34,11 @@
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
-    //layout.minimumInteritemSpacing = 5;
-    //layout.minimumLineSpacing = 5;
-    
     CGFloat postersPerline = 3;
     
-    //CGFloat itemWidth = (self.collectionView.frame.size.width - minimumInteritemSpacing) *postersPerline-1/ postersPerline;
     CGFloat itemWidth = self.collectionView.frame.size.width / postersPerline;
     CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake( itemWidth, itemHeight);
-    
-    //adding the search bar
-    //
-    //
-    //self.searchBar.delegate = self;
     
 }
 
@@ -80,10 +71,6 @@
     [task resume];
 }
 
-/*//added for search bar section
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.filteredData.count;
-}*/
 
 #pragma mark - Navigation
 
@@ -92,20 +79,13 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    
-    //UITabelViewCell *tappedCell = sender;
     UICollectionViewCell *tappedCell = sender;
     
-    //does this matter? not breaking code but giving me a warning, replaced tableView with collectionView
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-    //NSDictionary *movie = self.movies[indexPath.row];
     NSDictionary *movie = self.filteredData[indexPath.row];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
-    //detailsViewController.movie = self.filteredData[indexPath.item];
-    
-    //NSLog(@"tapping on a movie!");
 }
 
 
@@ -128,7 +108,6 @@
     return self.filteredData.count;
 }
 
-//tweeking with search bar
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if(searchText.length != 0){
         
@@ -141,6 +120,22 @@
     }
     
     [self.collectionView reloadData];
+}
+
+//canceling out the search bar
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = YES;
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    
+    self.filteredData = self.movies;
+    [self.collectionView reloadData];
+    
+    
+    
 }
 
 
